@@ -1,0 +1,30 @@
+{
+  "source": "Microsoft Global ML Building Footprints",
+  "source_url": "https://github.com/microsoft/GlobalMLBuildingFootprints",
+  "source_file": "https://bfppub.z5.web.core.windows.net/2026-08-13/global-buildings.geojsonl/RegionName=Thailand/quadkey=132201301/part-00055-110f5303-ff85-4c71-a2bf-c6070024fec8.c000.csv.gz",
+  "license": "CDLA Permissive 2.0",
+  "manifest_date": "2026-08-13",
+  "selection": "polygon vertex-average centroid within 1200m of published community coordinate, not a village boundary",
+  "coordinate": [
+    99.18079999165937,
+    18.80842873834785
+  ],
+  "features": 589,
+  "scanned": 157891,
+  "asset_bytes": 187335,
+  "archive_sha256": "9debc37d96960351b6b8a5242a630f4887e3324309daa1013a074c11119eac99",
+  "sample_properties": [
+    {
+      "height": -1.0,
+      "confidence": -1.0
+    },
+    {
+      "height": -1.0,
+      "confidence": -1.0
+    },
+    {
+      "height": -1.0,
+      "confidence": -1.0
+    }
+  ]
+}
