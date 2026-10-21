@@ -1,6 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createBaseTileErrorHandler } from '../src/map-errors.js';
+import { createBaseTileErrorHandler, mapAvailabilityMessage } from '../src/map-errors.js';
+
+test('map status clears recoverable loading or timeout messages and names degraded data', () => {
+  const status = { textContent: 'แผนที่ใช้เวลานานกว่าปกติ · ภาพป่าชุมชนบ้านต้นผึ้ง' };
+  status.textContent = mapAvailabilityMessage(true, true);
+  assert.equal(status.textContent, '', 'a healthy recovered map has no status message');
+
+  assert.match(mapAvailabilityMessage(false, true), /ภูมิประเทศไม่พร้อมใช้งาน/);
+  assert.match(mapAvailabilityMessage(true, false), /รอยอาคารไม่พร้อมใช้งาน/);
+  assert.match(mapAvailabilityMessage(false, false), /ภูมิประเทศและรอยอาคารไม่พร้อมใช้งาน/);
+});
 
 test('repeated base-vector tile failures reveal the real-photo fallback', () => {
   const classes = new Set(['is-ready']);

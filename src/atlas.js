@@ -1,7 +1,7 @@
 import { Map as MapLibreMap, setWorkerUrl } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import { CAMERA_STOPS, cameraTarget, mapCameraPadding, storyCameraProgress } from './camera.js';
-import { createBaseTileErrorHandler } from './map-errors.js';
+import { createBaseTileErrorHandler, mapAvailabilityMessage } from './map-errors.js';
 import { isVillageMarkerVisible } from './location-visibility.js';
 
 setWorkerUrl(workerUrl);
@@ -19,7 +19,7 @@ const firstChapterCopy = document.querySelector('#chapter-land .chapter-copy');
 const chapterCaptions = [
   'ภูมิประเทศ · ดอยสะเก็ด',
   'ย่านชุมชน · แม่โป่ง',
-  'ระยะใกล้ · รอยอาคารประมาณจากภาพถ่ายดาวเทียม',
+  'ระยะใกล้ · ย่านชุมชน',
   'จุดชุมชน · รอยอาคารประมาณจากภาพถ่ายดาวเทียม',
 ];
 
@@ -80,11 +80,11 @@ export function initAtlas() {
       showFallback('แผนที่เชื่อมต่อไม่สำเร็จ · แสดงภาพป่าชุมชนบ้านต้นผึ้ง');
     } else if (event?.sourceId === 'tonphueng-footprints' && footprintsAvailable) {
       footprintsAvailable = false;
-      status.textContent = 'แผนที่ภูมิประเทศ · ข้อมูลรอยอาคารไม่พร้อมใช้งาน';
+      status.textContent = mapAvailabilityMessage(demAvailable, footprintsAvailable);
     } else if (event?.sourceId === 'tonphueng-dem' && demAvailable) {
       demAvailable = false;
       try { map.setTerrain(null); map.removeLayer('tonphueng-hillshade'); } catch { /* map may still be loading */ }
-      status.textContent = 'แผนที่สองมิติ · ข้อมูลภูมิประเทศไม่พร้อมใช้งาน';
+      status.textContent = mapAvailabilityMessage(demAvailable, footprintsAvailable);
     } else {
       handleBaseTileError.handleError(event, styleLoaded);
     }
@@ -94,11 +94,9 @@ export function initAtlas() {
     styleLoaded = true;
     window.clearTimeout(fatalTimer);
     if (!handleBaseTileError.handleLoad()) return;
+    status.textContent = mapAvailabilityMessage(demAvailable, footprintsAvailable);
     stage.classList.remove('is-fallback');
     stage.classList.add('is-ready');
-    status.textContent = footprintsAvailable
-      ? 'แผนที่ภูมิประเทศ · บ้านต้นผึ้ง'
-      : 'แผนที่ภูมิประเทศ · ข้อมูลรอยอาคารไม่พร้อมใช้งาน';
     for (const layer of map.getStyle().layers) {
       if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
     }
@@ -148,7 +146,7 @@ export function initAtlas() {
       }, 'water');
     } catch {
       demAvailable = false;
-      status.textContent = 'แผนที่สองมิติ · ข้อมูลภูมิประเทศไม่พร้อมใช้งาน';
+      status.textContent = mapAvailabilityMessage(demAvailable, footprintsAvailable);
     }
 
     try {
@@ -171,7 +169,7 @@ export function initAtlas() {
       });
     } catch {
       footprintsAvailable = false;
-      status.textContent = 'แผนที่ภูมิประเทศ · ข้อมูลรอยอาคารไม่พร้อมใช้งาน';
+      status.textContent = mapAvailabilityMessage(demAvailable, footprintsAvailable);
     }
 
     map.addSource('tonphueng-place', {

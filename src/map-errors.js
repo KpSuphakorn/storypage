@@ -1,3 +1,10 @@
+export function mapAvailabilityMessage(demAvailable, footprintsAvailable) {
+  if (!demAvailable && !footprintsAvailable) return 'แผนที่สองมิติ · ข้อมูลภูมิประเทศและรอยอาคารไม่พร้อมใช้งาน';
+  if (!demAvailable) return 'แผนที่สองมิติ · ข้อมูลภูมิประเทศไม่พร้อมใช้งาน';
+  if (!footprintsAvailable) return 'แผนที่ภูมิประเทศ · ข้อมูลรอยอาคารไม่พร้อมใช้งาน';
+  return '';
+}
+
 export function createBaseTileErrorHandler(showFallback, threshold = 3) {
   let failures = 0;
   let failedBeforeLoad = false;
