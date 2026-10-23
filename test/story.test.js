@@ -86,6 +86,10 @@ test('village showcase renders four API-backed category sliders before field fra
   assert.match(styles, /\.showcase-row:nth-child\(even\) \.showcase-copy\.is-wiping-out \{ animation: showcase-copy-out-rtl/);
   assert.match(styles, /@keyframes showcase-copy-in-ltr/);
   assert.match(styles, /@keyframes showcase-copy-in-rtl/);
+  assert.match(styles, /@media \(width <= 760px\) \{[\s\S]*\.showcase-row, \.showcase-row:nth-child\(even\) \{[^}]*grid-template-columns: repeat\(12,minmax\(0,1fr\)\)/);
+  assert.match(styles, /\.showcase-row \.showcase-info, \.showcase-row:nth-child\(even\) \.showcase-info \{[^}]*grid-column: 1 \/ 9;[^}]*grid-row: 1/);
+  assert.match(styles, /\.showcase-row:nth-child\(even\) \.showcase-info \{ grid-column: 5 \/ 13 \}/);
+  assert.match(styles, /\.showcase-row:nth-child\(even\) \.showcase-media \{ grid-column: 1 \/ 9 \}/);
 });
 
 test('story gradients are driven by scroll progress and grid captions are unnumbered', () => {

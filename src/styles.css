@@ -786,20 +786,24 @@ img { display: block; max-width: 100% }
   .print-side-note { grid-column: 1; padding-top: 18px; font-size: 15px }
   .village-showcase { padding: 0 }
   .village-showcase__heading { grid-template-columns: 1fr; gap: 25px; margin-bottom: 52px; padding: 76px var(--gutter) 0 }
-  .village-showcase__heading h2 { font-size: clamp(57px,17.5vw,94px) }
+  .village-showcase__heading h2 { font-size: clamp(42px,13vw,70px) }
   .village-showcase__intro { max-width: 620px; padding: 0 }
   .village-showcase__intro p { font-size: 16px }
   .showcase-status { margin: 0 var(--gutter) }
-  .showcase-row, .showcase-row:nth-child(even) { display: flex; min-height: 0; flex-direction: column }
-  .showcase-row .showcase-info, .showcase-row:nth-child(even) .showcase-info { order: 1 }
-  .showcase-row .showcase-media, .showcase-row:nth-child(even) .showcase-media { order: 2 }
-  .showcase-info { min-height: 420px; padding: 27px 24px 22px }
-  .showcase-info h3 { max-width: 15ch; font-size: clamp(33px,10vw,48px) }
-  .showcase-copy { padding: 30px 0 }
-  .showcase-copy h4 { font-size: 24px }
-  .showcase-copy p { font-size: 15px }
-  .showcase-media { min-height: min(52svh,440px) }
-  .showcase-media figcaption { font-size: 9px }
+  .showcase-row, .showcase-row:nth-child(even) { position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); min-height: clamp(620px,88svh,720px); padding: 30px 0; background: #173531 }
+  .showcase-row .showcase-info, .showcase-row:nth-child(even) .showcase-info { z-index: 2; grid-column: 1 / 9; grid-row: 1; order: initial; min-height: 0; margin: 44px 0; padding: 26px 20px 18px; box-shadow: 0 24px 60px #07131252 }
+  .showcase-row:nth-child(even) .showcase-info { grid-column: 5 / 13 }
+  .showcase-row .showcase-media, .showcase-row:nth-child(even) .showcase-media { z-index: 1; grid-column: 5 / 13; grid-row: 1; order: initial; min-height: 100% }
+  .showcase-row:nth-child(even) .showcase-media { grid-column: 1 / 9 }
+  .showcase-info h3 { max-width: 15ch; font-size: clamp(29px,8vw,38px); line-height: 1.06 }
+  .showcase-copy { padding: 26px 0 }
+  .showcase-copy h4 { margin-bottom: 12px; font-size: clamp(20px,5.6vw,26px); line-height: 1.2 }
+  .showcase-copy p { font-size: clamp(13px,3.7vw,15px); line-height: 1.68 }
+  .showcase-controls { grid-template-columns: repeat(3,minmax(0,1fr)) }
+  .showcase-control { width: 100%; height: 44px; font-size: 20px }
+  .showcase-control--pause { font-size: 13px }
+  .showcase-media figcaption { right: 12px; bottom: 12px; left: auto; max-width: 38%; font-size: 8px }
+  .showcase-row:nth-child(even) .showcase-media figcaption { right: auto; left: 12px; text-align: left }
   .field-mosaic { padding-top: 76px; padding-bottom: 92px }
   .field-mosaic__heading { grid-template-columns: 1fr; gap: 26px; margin-bottom: 58px }
   .field-mosaic__heading h2 { font-size: clamp(58px,18vw,96px) }
@@ -830,6 +834,11 @@ img { display: block; max-width: 100% }
   .sources { display: block; padding-top: 18px; padding-bottom: 22px }
   .sources > span { display: block; padding-top: 15px; white-space: normal }
   .sources__body { font-size: 12px }
+}
+
+@media (width <= 430px) {
+  .showcase-row .showcase-info { grid-column: 1 / 10; padding-right: 18px; padding-left: 18px }
+  .showcase-row:nth-child(even) .showcase-info { grid-column: 4 / 13 }
 }
 
 @media (width <= 390px) {
