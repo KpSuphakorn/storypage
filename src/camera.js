@@ -51,6 +51,15 @@ export function cameraTarget(progress, activeStep, reducedMotion, stops = CAMERA
   return reducedMotion ? stops[activeStep] : interpolateCamera(progress, stops);
 }
 
+export function exitCameraTarget(progress, reducedMotion, stop = CAMERA_STOPS.at(-1)) {
+  if (reducedMotion) return { ...stop, zoom: 18.35 };
+  const clamped = clamp(progress, 0, 1);
+  let zoom = 17.75;
+  if (clamped < 0.26) zoom = mix(stop.zoom, 17.75, ease(clamped / 0.26));
+  if (clamped > 0.56) zoom = mix(17.75, 18.35, ease((clamped - 0.56) / 0.44));
+  return { ...stop, zoom };
+}
+
 export function mapCameraPadding(width, height, activeStep) {
   const bottom = width <= 760 ? Math.round(height * 0.42) : 0;
   const right = width > 760 && width <= 1100 && activeStep >= 2

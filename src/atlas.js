@@ -1,6 +1,6 @@
 import { Map as MapLibreMap, setWorkerUrl } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
-import { CAMERA_STOPS, cameraTarget, mapCameraPadding, storyCameraProgress } from './camera.js';
+import { CAMERA_STOPS, cameraTarget, exitCameraTarget, mapCameraPadding, storyCameraProgress } from './camera.js';
 import { createBaseTileErrorHandler, mapAvailabilityMessage } from './map-errors.js';
 import { isVillageMarkerVisible } from './location-visibility.js';
 
@@ -16,6 +16,7 @@ const mapCaption = document.querySelector('#map-caption');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const mobileViewport = window.matchMedia('(max-width: 760px)');
 const firstChapterCopy = document.querySelector('#chapter-land .chapter-copy');
+const atlasExit = document.querySelector('.atlas__exit');
 const chapterCaptions = [
   'ภูมิประเทศ · ดอยสะเก็ด',
   'ย่านชุมชน · แม่โป่ง',
@@ -218,16 +219,24 @@ export function initAtlas() {
     if (stageRect.bottom <= 0 || stageRect.top >= window.innerHeight) return;
     const padding = mapCameraPadding(window.innerWidth, window.innerHeight, activeStep);
     const paddingKey = `${padding.top}:${padding.right}:${padding.bottom}:${padding.left}`;
+    const exitBounds = atlasExit?.getBoundingClientRect();
+    const exitProgress = exitBounds && exitBounds.top <= 0
+      ? Math.min(1, Math.max(0, -exitBounds.top / Math.max(1, atlasExit.offsetHeight - window.innerHeight)))
+      : null;
+    const target = exitProgress === null
+      ? cameraTarget(progress, activeStep, reducedMotion.matches)
+      : exitCameraTarget(exitProgress, reducedMotion.matches);
+    const cameraStep = exitProgress === null ? activeStep : 'exit';
     if (reducedMotion.matches) {
-      if (activeStep !== lastCameraStep || paddingKey !== lastPaddingKey) {
-        map.jumpTo({ ...cameraTarget(progress, activeStep, true), padding });
+      if (cameraStep !== lastCameraStep || paddingKey !== lastPaddingKey) {
+        map.jumpTo({ ...target, padding });
       }
-      lastCameraStep = activeStep;
+      lastCameraStep = cameraStep;
       lastPaddingKey = paddingKey;
       return;
     }
-    map.jumpTo({ ...cameraTarget(progress, activeStep, false), padding });
-    lastCameraStep = activeStep;
+    map.jumpTo({ ...target, padding });
+    lastCameraStep = cameraStep;
     lastPaddingKey = paddingKey;
   }
   function onScroll() {

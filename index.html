@@ -3,17 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f3f3ed" />
+    <meta name="theme-color" content="#071312" />
     <meta name="description" content="เดินทางผ่านภูมิประเทศและเรื่องราวของบ้านต้นผึ้ง หมู่บ้านเล็กในอำเภอดอยสะเก็ด จังหวัดเชียงใหม่" />
     <link rel="icon" type="image/svg+xml" href="/assets/mark.svg" />
     <title>ต้นผึ้ง — ภูมิทัศน์ที่เล่าเรื่องของเรา</title>
   </head>
   <body>
     <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
-    <header class="topbar">
-      <a class="wordmark" href="#home" aria-label="ต้นผึ้ง กลับไปหน้าแรก">ต้นผึ้ง<span> / TON PHUENG</span></a>
-      <nav aria-label="การนำทางหลัก"><a class="topbar__link" href="#chapter-land">เริ่มอ่านเรื่องราว <span aria-hidden="true">↓</span></a></nav>
-    </header>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="เปิดเมนู">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <div class="menu-scrim" aria-hidden="true"></div>
+    <nav class="site-menu" id="site-menu" aria-label="การนำทางเรื่องราว" aria-hidden="true" inert>
+      <p class="site-menu__eyebrow">STORY INDEX · DOI SAKET</p>
+      <a class="site-menu__brand" href="#home">ต้นผึ้ง <span>/ TON PHUENG</span></a>
+      <div class="site-menu__links">
+        <a href="#chapter-land"><span>01</span>แผนที่และที่ตั้ง</a>
+        <a href="#forest"><span>02</span>ผืนป่าของชุมชน</a>
+        <a href="#profile"><span>03</span>ข้อมูลพื้นที่</a>
+        <a href="#leaves"><span>04</span>จากใบไม้สู่ภาชนะ</a>
+        <a href="#ecoprint"><span>05</span>Eco-print</a>
+        <a href="#showcase"><span>06</span>สินค้าและการเดินทาง</a>
+        <a href="#fragments"><span>07</span>Field Fragments</a>
+      </div>
+    </nav>
 
     <main id="main-content" tabindex="-1">
       <section class="atlas" id="home" aria-label="แผนที่ภูมิประเทศและเรื่องราวบ้านต้นผึ้ง">
@@ -21,32 +34,102 @@
           <div id="map" class="atlas__map" aria-label="แผนที่ภูมิประเทศสามมิติบริเวณบ้านต้นผึ้ง"></div>
           <img class="atlas__fallback" src="/assets/forest-trail.webp" alt="ทางเดินในป่าชุมชนบ้านต้นผึ้ง" />
           <div class="atlas__wash" aria-hidden="true"></div>
-          <div class="atlas__topline"><span>เชียงใหม่ / ประเทศไทย</span></div>
+          <div class="atlas__compass" aria-hidden="true"><span>N</span></div>
+          <div class="story-rail" aria-hidden="true">
+            <span class="story-rail__label">SCROLL / STORY</span>
+            <span class="story-rail__dot" data-step="1">01</span>
+            <span class="story-rail__dot" data-step="2">02</span>
+            <span class="story-rail__dot" data-step="3">03</span>
+          </div>
           <p class="map-caption" id="map-caption">มุมกว้างของดอยสะเก็ด · ภาพภูมิประเทศจากข้อมูลความสูง</p>
           <div class="map-info">
             <p class="map-status" id="map-status" role="status" aria-live="polite"></p>
-            <div class="map-attribution" aria-label="ที่มาของแผนที่">แผนที่ <a href="https://openfreemap.org/" target="_blank" rel="noreferrer">OpenFreeMap</a> · ข้อมูล <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a> / <a href="https://openmaptiles.org/" target="_blank" rel="noreferrer">© OpenMapTiles</a> · อาคาร <a href="https://github.com/microsoft/GlobalMLBuildingFootprints" target="_blank" rel="noreferrer">Microsoft Global ML Building Footprints</a> · ภูมิประเทศ <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noreferrer">AWS Terrain Tiles / Tilezen</a></div>
+          </div>
+          <div class="field-story__hero atlas__exit-preview" aria-hidden="true">
+            <img src="/assets/forest-trail.webp" alt="ทางเดินใต้ร่มไม้ในป่าชุมชนบ้านต้นผึ้ง" />
+            <div class="field-story__hero-copy"><p class="field-kicker">04 / FOREST · FIELD NOTES</p><h2><span>WITH</span><br />THE FOREST</h2><p class="field-story__thai-title">ป่าที่ชุมชนช่วยกันดูแล</p></div>
+            <figure class="field-inset"><img src="/assets/forest-community.webp" alt="สมาชิกชุมชนชี้อธิบายแผนภาพการจัดการป่าและน้ำ" /><figcaption>สมาชิกชุมชนอธิบายการดูแลป่าและน้ำ</figcaption></figure>
+            <p class="field-story__hero-credit">ป่าชุมชนบ้านต้นผึ้ง</p>
+          </div>
+          <div class="cinematic-cover" id="cinematic-cover">
+            <div class="cinematic-cover__media">
+              <img class="cinematic-cover__img" src="/assets/gen-image.png" alt="ภาพป่าและเส้นทางชุมชนบ้านต้นผึ้ง" />
+              <div class="cinematic-cover__brightness" aria-hidden="true"></div>
+              <div class="cinematic-cover__vignette" aria-hidden="true"></div>
+              <div class="cinematic-cover__wipe-edge" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="atlas__hero cinematic-hero">
+            <p class="eyebrow cinematic-eyebrow">หมู่บ้าน</p>
+            <h1 class="cinematic-title">ต้นผึ้ง</h1>
+            <p class="atlas__dek cinematic-dek">ภูมิทัศน์เล็ก ๆ ที่ผู้คนดูแล<br />และเรียนรู้ไปพร้อมกับผืนป่า</p>
+            <a class="hero-link" href="#chapter-land">เดินทางเข้าสู่หมู่บ้าน <span aria-hidden="true">↓</span></a>
           </div>
         </div>
 
-        <div class="atlas__hero">
-          <p class="eyebrow">PHOTO ESSAY · MAE PONG, DOI SAKET</p>
-          <h1>ต้นผึ้ง</h1>
-          <p class="atlas__dek">ภูมิทัศน์เล็ก ๆ ที่ผู้คนดูแล<br />และเรียนรู้ไปพร้อมกับผืนป่า</p>
-          <a class="hero-link" href="#chapter-land">เดินทางเข้าสู่หมู่บ้าน <span aria-hidden="true">↓</span></a>
-        </div>
+        <div class="cinematic-track" id="cinematic-track" aria-hidden="true"></div>
 
-        <div class="atlas__chapters" id="story">
-          <article class="map-chapter map-chapter--intro" id="chapter-land">
-            <div class="chapter-copy"><span class="chapter-index">01 / ที่ตั้ง</span><h2>บ้านเล็ก ๆ<br />ในแม่โป่ง</h2><p>จากมุมกว้างของดอยสะเก็ด เราค่อยเข้าใกล้บ้านต้นผึ้ง หมู่ 7 ตำบลแม่โป่ง ที่นี่ผู้คนดูแลป่าและต้นไม้รอบบ้านร่วมกัน</p><a href="#chapter-village" class="text-link">เข้าใกล้ชุมชน <span>↓</span></a></div>
-          </article>
-          <article class="map-chapter" id="chapter-village">
-            <div class="chapter-copy"><span class="chapter-index">02 / ย่านชุมชน</span><h2>ถนนค่อยพาเรา<br />เข้ามาใกล้บ้าน</h2><p>เมื่อมองใกล้ขึ้น แนวถนนและรอยอาคารโดยประมาณเริ่มปรากฏรอบพิกัดของบ้านต้นผึ้ง</p><a href="#chapter-hills" class="text-link">จากแผนที่สู่เรื่องของผู้คน <span>↓</span></a></div>
-          </article>
-          <article class="map-chapter map-chapter--last" id="chapter-hills">
-            <div class="chapter-copy"><span class="chapter-index">03 / จากแผนที่สู่ภาพจริง</span><h2>จากพิกัด<br />สู่ภาพชีวิต</h2><p>เส้นบนแผนที่เป็นเพียงจุดเริ่มต้น ต่อจากนี้คือภาพของผู้คนที่ดูแลป่า และเปลี่ยนใบไม้ที่ร่วงหล่นให้กลับมาเป็นของใช้</p><a href="#forest" class="text-link">เข้าสู่ภาพจากพื้นที่ <span>↓</span></a></div>
-          </article>
+        <div class="atlas__story-grid" id="story">
+          <div class="atlas__chapters" aria-label="ลำดับเรื่องจากแผนที่">
+            <article class="map-chapter map-chapter--intro" id="chapter-land">
+              <div class="chapter-copy">
+                <h2>บ้านเล็ก ๆ<br />ในแม่โป่ง</h2>
+                <p>จากแนวเขาของดอยสะเก็ด เราค่อย ๆ เคลื่อนเข้าใกล้บ้านต้นผึ้ง หมู่ 7 ตำบลแม่โป่ง ชุมชนเล็กบนพื้นที่ราบเชิงเขา ที่ผู้คนวางชีวิตประจำวันไว้ข้างผืนป่าและพื้นที่ชุ่มน้ำ หมู่บ้านก่อตั้งขึ้นเมื่อ พ.ศ. 2524 และค่อย ๆ เติบโตไปตามแนวถนนและพื้นที่เกษตร ความอุดมสมบูรณ์ของดิน น้ำ และร่มเงาจากผืนป่าจึงเป็นทั้งรากฐานของการตั้งถิ่นฐานและจังหวะชีวิตของผู้คนที่นี่</p>
+                <div class="chapter-illustration" aria-hidden="true">
+                  <svg viewBox="0 0 260 120" focusable="false">
+                    <circle cx="218" cy="22" r="10" />
+                    <path d="M4 82 48 38l31 31 31-46 52 59 31-37 63 37M4 94c36-9 67-8 98 1s66 10 101 0 42-8 53-5" />
+                    <path d="M58 91V71l18-13 18 13v20m-29 0V78h9v13m30 1V76l15-11 15 11v18m-25-2V81h8v12" />
+                    <path d="M158 91V63m0 6-12-13m12 9 11-14m-11 27-15-12m15 7 15-12M18 104c34-7 59-6 88 1s62 8 91 1 44-7 59-4" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+            <article class="map-chapter" id="chapter-village">
+              <div class="chapter-copy">
+                <h2>ถนนค่อยพาเรา<br />เข้ามาใกล้บ้าน</h2>
+                <p>เมื่อระยะห่างค่อย ๆ ลดลง แนวถนน รอยอาคาร และคลองชลประทานเริ่มปรากฏรอบพิกัดของบ้านต้นผึ้ง ภูมิประเทศบนแผนที่จึงค่อย ๆ กลายเป็นพื้นที่ของผู้คน ชุมชนแห่งนี้มีประชากรราว 333 คนใน 158 ครัวเรือน โดยมีคลองชลประทานสองสายช่วยหล่อเลี้ยงพื้นที่เกษตรและเชื่อมโยงการใช้น้ำของแต่ละบ้าน ถนนสายเล็ก ๆ จึงไม่ได้เป็นเพียงเส้นทางสัญจร แต่เป็นโครงข่ายที่พาผู้คน น้ำ และผลผลิตเคลื่อนไปด้วยกัน</p>
+                <div class="chapter-illustration" aria-hidden="true">
+                  <svg viewBox="0 0 260 120" focusable="false">
+                    <path d="M-8 111c42-22 60-49 97-53s55 18 87 6 43-36 92-45M-4 95c39-21 58-45 92-48s55 18 84 8 42-34 91-44" />
+                    <path d="M4 76c28-13 50-15 74-8s46 8 69-4 47-16 109-15M7 84c29-12 49-13 70-6s45 9 72-4 49-16 107-14" />
+                    <path d="M42 70V54l12-9 12 9v13m69-3V47l13-10 13 10v12m52-28V16l11-8 11 8v12" />
+                    <circle cx="54" cy="44" r="3" /><circle cx="148" cy="36" r="3" /><circle cx="224" cy="7" r="3" />
+                    <path d="M26 103h34m-17-8v16m58-88h26m-13-8v16m72 62h31m-16-8v16" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+            <article class="map-chapter map-chapter--last" id="chapter-hills">
+              <div class="chapter-copy">
+                <h2>จากพิกัด<br />สู่ภาพชีวิต</h2>
+                <p>แผนที่พาเรามาถึงเพียงตำแหน่งหนึ่ง ต่อจากนี้คือภาพของผู้คนที่ดูแลป่า วัดการกักเก็บคาร์บอน และเปลี่ยนใบไม้ที่ร่วงหล่นให้กลับมาเป็นของใช้และรายได้ในชุมชน ป่าชุมชนราว 983 ไร่ทำหน้าที่เป็นทั้งต้นน้ำ แหล่งอาหาร และพื้นที่เรียนรู้ร่วมกัน การสำรวจต้นไม้และติดตามคาร์บอนที่ได้รับการรับรอง 1,055 tCO₂eq ทำให้การดูแลผืนป่ากลายเป็นสิ่งที่มองเห็น วัดผล และส่งต่อคุณค่าไปถึงคนรุ่นถัดไปได้</p>
+                <div class="chapter-illustration" aria-hidden="true">
+                  <svg viewBox="0 0 260 120" focusable="false">
+                    <path d="M34 101V61m0 12L19 58m15 8 15-17m-15 39L15 73m19 8 20-18M91 101V42m0 15L72 39m19 9 17-22m-17 42L68 52m23 8 25-25m46 66V56m0 13-15-14m15 7 14-18m-14 38-18-15m18 7 20-22" />
+                    <path d="M9 102c42-7 79-7 113 0s71 7 129-1M18 110h224" />
+                    <path d="M122 88h113v22H122zM132 88V76m93 12V76m-93 5h93M144 81v7m13-7v7m13-7v7m13-7v7m13-7v7m13-7v7" />
+                    <circle cx="211" cy="32" r="18" /><circle cx="202" cy="29" r="4" /><circle cx="219" cy="23" r="4" /><circle cx="220" cy="41" r="4" />
+                    <path d="m205 28 10-4m-11 8 12 7" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="atlas-gallery" aria-label="ภาพจากบ้านต้นผึ้งและป่าชุมชน">
+            <div class="atlas-gallery__track">
+              <figure class="atlas-gallery__slide"><img src="/assets/village-sign.webp" alt="ป้ายป่าชุมชนบ้านต้นผึ้งท่ามกลางต้นไม้" loading="lazy" /><figcaption>ทางเข้าสู่ป่าชุมชน</figcaption></figure>
+              <figure class="atlas-gallery__slide"><img src="/assets/community-coop.webp" alt="ร้านค้าสหกรณ์ภายในชุมชนบ้านต้นผึ้ง" loading="lazy" /><figcaption>ร้านค้าชุมชน จุดเชื่อมของผู้คน</figcaption></figure>
+              <figure class="atlas-gallery__slide"><img src="/assets/forest-community.webp" alt="สมาชิกชุมชนอธิบายระบบจัดการน้ำและป่า" loading="lazy" /><figcaption>ความรู้เรื่องป่าและน้ำจากคนในพื้นที่</figcaption></figure>
+              <figure class="atlas-gallery__slide"><img src="/assets/village-field-map.webp" alt="แผนที่ภาคสนามแสดงตำแหน่งชุมชนและป่าชุมชนบ้านต้นผึ้ง" loading="lazy" /><figcaption>ตำแหน่งของบ้านและแนวป่าที่ดูแลร่วมกัน</figcaption></figure>
+              <figure class="atlas-gallery__slide"><img src="/assets/forest-trail.webp" alt="ทางเดินและแปลงศึกษาคาร์บอนในป่าชุมชน" loading="lazy" /><figcaption>เส้นทางเข้าไปอ่านผืนป่า</figcaption></figure>
+              <figure class="atlas-gallery__slide"><img src="/assets/carbon-plots-board.webp" alt="ป้ายข้อมูลแปลงตัวอย่างคาร์บอนเครดิตในป่าชุมชน" loading="lazy" /><figcaption>การดูแลที่วัดและติดตามผลได้</figcaption></figure>
+            </div>
+          </aside>
         </div>
+        <div class="atlas__exit" aria-hidden="true"></div>
       </section>
 
       <section class="field-story field-story--forest" id="forest" aria-labelledby="forest-title">
@@ -59,7 +142,61 @@
         <div class="field-story__body"><p class="field-kicker">A SHARED PRACTICE</p><p>การดูแลป่าเกิดขึ้นผ่านงานร่วมกัน เช่น การทำแนวกันไฟและการจัดการเศษใบไม้ ความรู้เรื่องพื้นที่และน้ำถูกส่งต่อผ่านการลงมือทำและการอธิบายให้กันฟัง</p><span class="field-story__index">ต้นไม้ · น้ำ · คนในชุมชน</span><aside class="forest-name-note"><p class="field-kicker">THE NAME · ต้นผึ้ง</p><p>อีกคำบอกเล่าของชุมชนเชื่อมชื่อบ้านกับผึ้งที่เคยมาทำรังตามต้นไม้ เรื่องเล่านี้ชวนมองความสัมพันธ์ระหว่างชื่อบ้านกับธรรมชาติรอบตัว</p></aside></div>
       </section>
 
-      <section class="field-story field-story--leaves" id="leaves" aria-labelledby="leaves-title">
+      <section class="place-profile scroll-gradient" id="profile" aria-labelledby="place-profile-title">
+        <header class="place-profile__intro">
+          <p class="field-kicker">PLACE PROFILE · FIELD DATA</p>
+          <h2 id="place-profile-title"><span>A VILLAGE</span><br />WITHIN THE FOREST</h2>
+          <div class="place-profile__lead">
+            <p>บ้านต้นผึ้งเป็นชุมชนเกษตรเล็ก ๆ ที่วางชีวิตประจำวันไว้ข้างป่าชุมชน การดูแลไฟป่า การจัดการน้ำ และการสร้างรายได้จากใบไม้จึงไม่ใช่เรื่องแยกจากกัน แต่เป็นระบบเดียวที่คนในพื้นที่ช่วยกันประคอง</p>
+            <p class="place-profile__source">ข้อมูลทะเบียนราษฎร มกราคม 2568 และการลงพื้นที่ 14–15 กรกฎาคม 2569</p>
+          </div>
+        </header>
+
+        <dl class="place-stats" aria-label="ข้อมูลสำคัญของบ้านต้นผึ้ง">
+          <div><dt><strong data-count-to="983">983</strong><span>ไร่</span></dt><dd>พื้นที่ป่าชุมชนบ้านต้นผึ้งในเขตป่าสงวนแห่งชาติป่าขุนแม่กวง</dd></div>
+          <div><dt><strong data-count-to="333">333</strong><span>คน</span></dt><dd>ประชากรตามทะเบียน 158 ครัวเรือน โดยร้อยละ 28 มีอายุ 60 ปีขึ้นไป</dd></div>
+          <div><dt><strong><span data-count-to="8">8</span> / <span data-count-to="10">10</span></strong><span>ป่า / หมู่บ้าน</span></dt><dd>เครือข่ายป่าชุมชน 8 ผืนที่เชื่อมการดูแลร่วมกันของ 10 หมู่บ้าน</dd></div>
+          <div><dt><strong data-count-to="1055">1,055</strong><span>tCO₂eq</span></dt><dd>คาร์บอนเครดิตที่ T-VER รับรองครั้งแรก จากผลการดำเนินงาน 3 ปี 3 เดือน</dd></div>
+        </dl>
+
+        <div class="place-context">
+          <article class="place-timeline">
+            <p class="field-kicker">1981—2024 · A LIVING TIMELINE</p>
+            <h3>จากหมู่บ้านชายป่า<br />สู่ผืนป่าที่วัดผลได้</h3>
+            <ol>
+              <li><time datetime="1981">2524</time><div><h4>เริ่มต้นบ้านต้นผึ้ง</h4><p>แยกการปกครองออกจากบ้านห้วยอ่าง ผู้คนตั้งถิ่นฐานตามพื้นที่ราบเชิงเขาใกล้ป่าและพื้นที่ชุ่มน้ำ “หนองแมงดา”</p></div></li>
+              <li><time datetime="2012-10-01">2555</time><div><h4>ขึ้นทะเบียนป่าชุมชน</h4><p>กรมป่าไม้ประกาศจัดตั้งป่าชุมชนบ้านต้นผึ้งอย่างเป็นทางการ เมื่อวันที่ 1 ตุลาคม</p></div></li>
+              <li><time datetime="2022-02-09">2565</time><div><h4>เข้าสู่โครงการ T-VER</h4><p>โครงการป่าไม้และพื้นที่สีเขียวเลขที่ 276 ขึ้นทะเบียน โดยคาดว่าจะลดหรือกักเก็บก๊าซเรือนกระจกได้ 301 tCO₂eq ต่อปี</p></div></li>
+              <li><time datetime="2024-11-26">2567</time><div><h4>รับรองเครดิตครั้งแรก</h4><p>T-VER รับรอง 1,055 tCO₂eq จากช่วงติดตามผลเดือนมกราคม 2564 ถึงเมษายน 2567</p></div></li>
+            </ol>
+          </article>
+
+          <aside class="forest-profile" aria-label="ภูมิประเทศและระบบนิเวศของป่าชุมชน">
+            <p class="field-kicker">FOREST LAYERS · ระบบนิเวศ</p>
+            <div class="forest-profile__elevation"><strong>350—631</strong><span>เมตรเหนือระดับน้ำทะเล</span></div>
+            <p>จากพื้นที่ราบเชิงเขาไปสู่ลอนเนิน คือป่าเต็งรังที่เชื่อมกับหมู่บ้านผ่านคลองชลประทาน 2 สาย และพื้นที่ชุ่มน้ำหนองแมงดา</p>
+            <div class="forest-profile__species" aria-label="พรรณไม้สำคัญ"><span>เหียง</span><span>เต็ง</span><span>รัง</span><span>ตองตึง</span><span>ปี้พงษ์</span><span>รัก</span></div>
+            <p class="forest-profile__wildlife">มีบันทึกสัตว์ป่า เช่น บ่าง กระต่าย งู ไก่ป่า และนกท้องถิ่น</p>
+          </aside>
+        </div>
+
+        <div class="wet-forest">
+          <div class="wet-forest__copy">
+            <p class="field-kicker">THE WET FOREST · แนวป่าเปียก</p>
+            <h3>น้ำเดินทางเกือบหนึ่งกิโลเมตร<br />ก่อนกลายเป็นแนวกันไฟ</h3>
+            <p>เครื่องสูบน้ำพลังงานแสงอาทิตย์ส่งน้ำจากตาน้ำธรรมชาติไปเก็บในถังขนาด 25,000 ลิตร แล้วกระจายผ่านเทปน้ำหยดแบบเจาะรู เพื่อเพิ่มความชุ่มชื้นให้แนวป่าในฤดูแล้ง</p>
+          </div>
+          <ol class="wet-forest__route" aria-label="เส้นทางน้ำสู่แนวป่าเปียก">
+            <li><span>01</span><p>ตาน้ำธรรมชาติ</p></li>
+            <li><span>02</span><p>ปั๊มพลังงานแสงอาทิตย์</p></li>
+            <li><span>03</span><p>ถังน้ำ 25,000 ลิตร</p></li>
+            <li><span>04</span><p>แนวป่าเปียก</p></li>
+          </ol>
+          <aside class="wet-forest__note"><strong>1–2 ตัน / ปี</strong><p>คือปริมาณใบไม้แห้งที่ชุมชนเก็บออกจากป่าโดยประมาณ ช่วยลดเชื้อเพลิงสะสม พร้อมนำบางส่วนกลับไปสร้างงานและรายได้</p></aside>
+        </div>
+      </section>
+
+      <section class="field-story field-story--leaves scroll-gradient" id="leaves" aria-labelledby="leaves-title">
         <header class="field-story__heading"><div><p class="field-kicker">05 / LEAF TO VESSEL · 01—03</p><h2 id="leaves-title"><span>FALLEN</span><br />FORMED</h2></div><p class="field-story__thai-title">ใบตองตึงที่ร่วงลง<br />กลับมาเป็นภาชนะ</p></header>
         <div class="leaf-sequence">
           <figure class="leaf-sequence__source"><img src="/assets/fallen-leaves.webp" alt="ใบตองตึงแห้งที่เก็บไว้สำหรับทำภาชนะ" loading="lazy" /><figcaption><span>01 / ใบตองตึงแห้ง</span><span>รับซื้อจากชาวบ้าน</span></figcaption></figure>
@@ -69,10 +206,52 @@
         </div>
       </section>
 
-      <section class="field-story field-story--print" id="ecoprint" aria-labelledby="print-title">
+      <section class="field-story field-story--print scroll-gradient" id="ecoprint" aria-labelledby="print-title">
         <div class="print-heading"><p class="field-kicker">06 / ECOPRINT · LEAVES ON CLOTH</p><h2 id="print-title"><span>PLANT</span><span>PRINT</span></h2><p class="field-story__thai-title">ลวดลายจากพืชที่เติบโตในพื้นที่</p><p class="print-copy">กลุ่ม Eco-print ใช้ใบไม้และดอกไม้ท้องถิ่น เช่น คูน สัก ตะขบ เพกา มะม่วง และดาวเรือง การจัดวางพืชกับสภาพธรรมชาติทำให้แต่ละผืนได้สีและลายต่างกัน</p></div>
         <figure class="print-feature"><img src="/assets/ecoprint-hands.webp" alt="สมาชิกชุมชนถือผ้าที่พิมพ์ลวดลายจากใบไม้และดอกไม้" loading="lazy" /><figcaption><span>ผืนผ้าพิมพ์ลายจากพืชท้องถิ่น</span></figcaption></figure>
         <p class="print-side-note">รูปร่างและเส้นใบปรากฏบนผืนผ้า<br />แต่ละชิ้นมีร่องรอยของพืชคนละแบบ</p>
+      </section>
+
+      <section class="village-showcase" id="showcase" aria-labelledby="showcase-title" data-services-endpoint="https://tonphueng-connect.vercel.app/api/services" data-fallback-endpoint="/data/village-showcase.json">
+        <header class="village-showcase__heading">
+          <div>
+            <p class="field-kicker">VILLAGE DIRECTORY · API PREVIEW</p>
+            <h2 id="showcase-title">LOCAL<br /><span>DISCOVERIES</span></h2>
+          </div>
+          <div class="village-showcase__intro">
+            <p>สำรวจสินค้า ที่พัก อาหาร และเส้นทางที่เชื่อมผู้มาเยือนเข้ากับผู้คนและภูมิทัศน์ของบ้านต้นผึ้ง</p>
+            <small>ข้อมูลกิจการจาก Tonphueng Connect · รูปสำรองจากคลังภาพของเรื่องเล่า</small>
+          </div>
+        </header>
+        <p class="showcase-status" id="showcase-status" role="status">กำลังเตรียมรายการจากชุมชน…</p>
+        <div class="showcase-grid" id="showcase-grid"></div>
+        <noscript><p class="showcase-status">กรุณาเปิด JavaScript เพื่อดูรายการสินค้าและเส้นทาง</p></noscript>
+      </section>
+
+      <section class="field-mosaic" id="fragments" aria-labelledby="mosaic-title">
+        <div class="field-mosaic__leaf-layer" aria-hidden="true">
+          <span class="field-mosaic__leaf field-mosaic__leaf--one"></span>
+          <span class="field-mosaic__leaf field-mosaic__leaf--two"></span>
+          <span class="field-mosaic__leaf field-mosaic__leaf--three"></span>
+          <span class="field-mosaic__leaf field-mosaic__leaf--four"></span>
+        </div>
+        <header class="field-mosaic__heading">
+          <div><h2 id="mosaic-title">FIELD<br /><span>FRAGMENTS</span></h2></div>
+          <p>เมื่อมองแยกเป็นภาพ เราเห็นป่า ใบไม้ เครื่องมือ และร้านค้าชุมชน แต่เมื่อวางทุกภาพไว้ด้วยกัน สิ่งที่ปรากฏคือระบบเดียวกัน—พื้นที่ที่คนดูแล และพื้นที่ที่ดูแลคนกลับคืน</p>
+        </header>
+
+        <div class="field-mosaic__grid">
+          <figure class="mosaic-frame mosaic-frame--map"><div class="mosaic-frame__image"><img src="/assets/village-field-map.webp" alt="แผนที่ภาคสนามแสดงตำแหน่งชุมชนและป่าชุมชนบ้านต้นผึ้ง" loading="lazy" /></div><figcaption>ตำแหน่งของบ้านและป่า</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--sign"><div class="mosaic-frame__image"><img src="/assets/village-sign.webp" alt="ป้ายป่าชุมชนบ้านต้นผึ้งท่ามกลางต้นไม้" loading="lazy" /></div><figcaption>ขอบเขตที่เริ่มจากการร่วมกันดูแล</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--community"><div class="mosaic-frame__image"><img src="/assets/forest-community.webp" alt="สมาชิกชุมชนอธิบายระบบจัดการน้ำและป่า" loading="lazy" /></div><figcaption>ความรู้เรื่องน้ำและป่าถูกส่งต่อระหว่างคน</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--forest"><div class="mosaic-frame__image"><img src="/assets/forest-trail.webp" alt="ทางเดินและแปลงศึกษาคาร์บอนในป่าชุมชน" loading="lazy" /></div><figcaption>เส้นทางเข้าไปอ่านผืนป่า</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--board"><div class="mosaic-frame__image"><img src="/assets/carbon-plots-board.webp" alt="ป้ายข้อมูลแปลงตัวอย่างคาร์บอนเครดิตในป่าชุมชน" loading="lazy" /></div><figcaption>การดูแลที่วัดและติดตามผลได้</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--leaves"><div class="mosaic-frame__image"><img src="/assets/fallen-leaves.webp" alt="ใบตองตึงแห้งที่รวบรวมไว้สำหรับผลิตภาชนะ" loading="lazy" /></div><figcaption>ใบไม้ร่วงเปลี่ยนจากเชื้อเพลิงเป็นวัตถุดิบ</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--press"><div class="mosaic-frame__image"><img src="/assets/leaf-press.webp" alt="เครื่องอัดความร้อนกำลังขึ้นรูปภาชนะจากใบตองตึง" loading="lazy" /></div><figcaption>ความร้อนและแรงกดสร้างรูปทรงใหม่</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--plates"><div class="mosaic-frame__image"><img src="/assets/leaf-plates.webp" alt="จานและชามสำเร็จรูปจากใบตองตึง" loading="lazy" /></div><figcaption>ภาชนะที่ยังเก็บรอยเส้นใบไว้</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--print"><div class="mosaic-frame__image"><img src="/assets/ecoprint-hands.webp" alt="ผ้าพิมพ์ลายใบไม้และดอกไม้ที่ทำในชุมชน" loading="lazy" /></div><figcaption>สีและรูปทรงของพืชอยู่ต่อบนผืนผ้า</figcaption></figure>
+          <figure class="mosaic-frame mosaic-frame--coop"><div class="mosaic-frame__image"><img src="/assets/community-coop.webp" alt="ร้านค้าสหกรณ์ภายในชุมชนบ้านต้นผึ้ง" loading="lazy" /></div><figcaption>ร้านค้าชุมชน จุดที่รายได้หมุนกลับมาหาผู้คน</figcaption></figure>
+        </div>
       </section>
 
       <section class="colophon" id="visit" aria-labelledby="colophon-title">
@@ -81,7 +260,7 @@
       </section>
     </main>
 
-    <footer class="sources"><details><summary>ที่มาและเครดิตภาพ</summary><div class="sources__body"><p>ข้อมูลชุมชน: <a href="https://wikicommunity.sac.or.th/community/2871" target="_blank" rel="noreferrer">วิกิชุมชน — บ้านต้นผึ้ง (ศูนย์มานุษยวิทยาสิรินธร)</a> และเอกสารสรุปพื้นที่โจทย์ ภาคเหนือ; ภาพทั้งหมดจากเอกสารดังกล่าว บันทึกการลงพื้นที่ 14–15 กรกฎาคม 2569</p><p>แผนที่แสดงภูมิประเทศจากข้อมูลความสูงและพิกัดชุมชนที่เผยแพร่ไว้ ไม่แสดงแนวเขตป่าชุมชน ใช้ข้อมูลจาก OpenFreeMap, © OpenMapTiles, © OpenStreetMap contributors และ AWS Terrain Tiles / Tilezen</p><p>รอยอาคารโดยประมาณสกัดจาก Microsoft Global ML Building Footprints (manifest 13 สิงหาคม 2569) เป็นข้อมูลจากภาพถ่ายดาวเทียมและอาจคลาดเคลื่อน ไม่ใช่ขอบเขตหรือจำนวนบ้านที่ยืนยันภาคสนาม เลือกรอยอาคารจากระยะราว 1.2 กม. จากพิกัดที่เผยแพร่ รายละเอียดชุดข้อมูลอยู่ใน <a href="/data/tonphueng-footprints-provenance.json">บันทึกที่มา</a>; เผยแพร่ภายใต้ CDLA Permissive 2.0 (<a href="/data/CDLA-Permissive-2.0.txt">อ่านข้อความใบอนุญาต</a>)</p></div></details><span>ต้นผึ้ง / TON PHUENG · 2026</span></footer>
+    <footer class="sources"><details><summary>ที่มาและเครดิตภาพ</summary><div class="sources__body"><p>ข้อมูลชุมชนและระบบนิเวศ: <a href="https://wikicommunity.sac.or.th/community/2871" target="_blank" rel="noreferrer">วิกิชุมชน — บ้านต้นผึ้ง (ศูนย์มานุษยวิทยาสิรินธร)</a> และเอกสารสรุปพื้นที่โจทย์ ภาคเหนือ; ข้อมูลการขึ้นทะเบียนและรับรองคาร์บอนเครดิต: <a href="https://tver.tgo.or.th/database/public/project/1/1/276?lang=th" target="_blank" rel="noreferrer">ฐานข้อมูล T-VER โครงการเลขที่ 276</a>; ภาพภาคสนามจากเอกสารสรุปพื้นที่ บันทึกการลงพื้นที่ 14–15 กรกฎาคม 2569; พื้นผิวพื้นป่าและองค์ประกอบใบไม้ในส่วน FIELD FRAGMENTS สร้างด้วย AI เพื่อการออกแบบ</p><p>แผนที่แสดงภูมิประเทศจากข้อมูลความสูงและพิกัดชุมชนที่เผยแพร่ไว้ ไม่แสดงแนวเขตป่าชุมชน ใช้ข้อมูลจาก OpenFreeMap, © OpenMapTiles, © OpenStreetMap contributors และ AWS Terrain Tiles / Tilezen</p><p>รอยอาคารโดยประมาณสกัดจาก Microsoft Global ML Building Footprints (manifest 13 สิงหาคม 2569) เป็นข้อมูลจากภาพถ่ายดาวเทียมและอาจคลาดเคลื่อน ไม่ใช่ขอบเขตหรือจำนวนบ้านที่ยืนยันภาคสนาม เลือกรอยอาคารจากระยะราว 1.2 กม. จากพิกัดที่เผยแพร่ รายละเอียดชุดข้อมูลอยู่ใน <a href="/data/tonphueng-footprints-provenance.json">บันทึกที่มา</a>; เผยแพร่ภายใต้ CDLA Permissive 2.0 (<a href="/data/CDLA-Permissive-2.0.txt">อ่านข้อความใบอนุญาต</a>)</p></div></details><span>ต้นผึ้ง / TON PHUENG · 2026</span></footer>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { CAMERA_STOPS, cameraTarget, interpolateCamera, mapCameraPadding, storyCameraProgress } from '../src/camera.js';
+import { CAMERA_STOPS, cameraTarget, exitCameraTarget, interpolateCamera, mapCameraPadding, storyCameraProgress } from '../src/camera.js';
 
 test('camera interpolation clamps and returns both chapter endpoints', () => {
   const stops = [
@@ -72,6 +72,16 @@ test('mobile camera holds while the current copy is readable, then approaches th
 test('reduced motion selects an immediate chapter pose instead of a scroll-interpolated camera', () => {
   assert.deepEqual(cameraTarget(0.5, 2, true), CAMERA_STOPS[2]);
   assert.deepEqual(cameraTarget(0.5, 2, false), interpolateCamera(0.5));
+});
+
+test('map exit zooms into Ton Phueng, holds, then keeps zooming through the fade', () => {
+  assert.equal(exitCameraTarget(0, false).zoom, 17.3);
+  assert.equal(exitCameraTarget(0.26, false).zoom, 17.75);
+  assert.equal(exitCameraTarget(0.5, false).zoom, 17.75);
+  assert.ok(exitCameraTarget(0.75, false).zoom > 17.75);
+  assert.equal(exitCameraTarget(1, false).zoom, 18.35);
+  assert.deepEqual(exitCameraTarget(0.4, false).center, CAMERA_STOPS.at(-1).center);
+  assert.equal(exitCameraTarget(0, true).zoom, 18.35);
 });
 
 test('camera padding keeps the true village point clear of cards at mobile and medium widths', () => {
